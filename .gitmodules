@@ -1,0 +1,3 @@
+[submodule "rime-hangyl"]
+	path = rime-hangyl
+	url = https://github.com/rime-aca/rime-hangyl

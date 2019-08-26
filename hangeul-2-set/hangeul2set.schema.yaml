@@ -1,0 +1,131 @@
+#錯誤查看%TEMP%\rime.weasel
+# Rime schema settings
+# encoding: utf-8
+# 《韓語設定頁》
+#前面加#字是不執行,後面加#也不執行
+schema:
+  schema_id: hangeul2set # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
+  name: ❃韓語2set❃
+  version: "201712"
+  author:
+    - 製作人
+  description: |
+    韓文
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ "韓文", "英文" ] 
+  - name: full_shape
+    states: [ "半形", "全形" ]
+
+engine: 
+  processors: 
+    - ascii_composer
+    - key_binder
+    - speller
+    - selector
+    - navigator
+    - punctuator
+    - recognizer
+    - express_editor
+#    - fluency_editor
+  segmentors:
+    - ascii_segmentor
+    - abc_segmentor
+    - punct_segmentor
+    - matcher
+    - fallback_segmentor
+  translators:
+    - script_translator 
+    - punct_translator
+    - table_translator@hangeul_phrase
+
+menu:
+  alternative_select_keys: "1234567890"
+  page_size: 10
+
+speller:
+  alphabet: "abcdefghijklmnopqrstuvwxyz;QWERTOP"
+  delimiter: " "
+  algebra:
+    - xform/mqo/QO/
+    - xform/mqp/QP/
+    - xform/mwo/WO/
+    - xform/mwp/WP/
+    - xform/meo/EO/
+    - xform/mep/EP/
+    - xform/mro/RO/
+    - xform/mrp/RP/
+    - xform/mto/TO/
+    - xform/mtp/TP/
+    - xform/qq/Q/
+    - xform/ww/W/
+    - xform/ee/E/
+    - xform/rr/R/
+    - xform/tt/T/
+    - xform/oo/O/
+    - xform/pp/P/
+    - derive/^Q/qq/
+    - derive/^W/ww/
+    - derive/^E/ee/
+    - derive/^R/rr/
+    - derive/^T/tt/
+
+translator:
+  dictionary: hangeul2set.extended
+  enable_user_dict: true
+  enable_sentence: false
+  enable_completion: false
+  preedit_format:
+    - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
+  comment_format:
+    - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
+  disable_user_dict_for_patterns:
+    - ^[a-z;]{1}$
+    - ^[a-z;]{2}$
+    - ^[a-z;]{3}$
+
+hangeul_phrase:
+  dictionary: ""
+  user_dict: hangeul2set_phrase
+  db_class: tabledb #stabledb
+  enable_completion: false
+  enable_sentence: false
+  initial_quality: "1"
+
+punctuator:
+  half_shape:
+    "`" : { commit: " " }
+    "$" : [ "$", "₩", "＄", "¥", "￥", "€", "£", "￡", "₤", "¢", "￠", "₵", "₡", "¤", "৳", "฿", "₠", "₢", "₣", "₥", "₦", "₧", "₪", "₫", "₭", "₮", "₯", "₰", "₱", "₲", "₳", "₴", "₶", "₷", "₸", "₹", "₺", "₨", "﷼" ]
+    "%" : [ "%", "％", "‰", "‱", "°", "℃", "℉", "Å", "㏃", "㏆", "㎈", "㏄", "㏅", "㎝", "㎠", "㎤", "㏈", "㎗", "㎙", "㎓", "㎬", "㏉", "㏊", "㏋", "㎐", "㏌", "㎄", "㎅", "㎉", "㎏", "㎑", "㏍", "㎘", "㎞", "㏎", "㎢", "㎦", "㎪", "㏏", "㎸", "㎾", "㏀", "㏐", "㏓", "㎧", "㎨", "㎡", "㎥", "㎃", "㏔", "㎆", "㎎", "㎒", "㏕", "㎖", "㎜", "㎟", "㎣", "㏖", "㎫", "㎳", "㎷", "㎹", "㎽", "㎿", "㏁", "㎁", "㎋", "㎚", "㎱", "㎵", "㎻", "㏘", "㎩", "㎀", "㎊", "㏗", "㏙", "㏚", "㎰", "㎴", "㎺", "㎭", "㎮", "㎯", "㏛", "㏜", "㎔", "㏝", "㎂", "㎌", "㎍", "㎕", "㎛", "㎲", "㎶", "㎼" ]
+    "&" : [ "&", "＆", "＃", "＠", ⅟, ½, ↉, ⅓, ⅔, ¼, ⅕, ⅖, ⅗, ⅘, ⅙, ⅚, ⅐, ⅛, ⅜, ⅝, ⅞, ⅑, ⅒ ]
+    "*" : [ "*", ＊, "﹡", ※, ❂, ★, ☆, ✡, ❋, ❊, ❉, ❈, ❇, ❆, ❅, ❄, ❃, ❁, ❀, ✿, ✾, ✽, ✼, ✻, ✺, ✹, ✸, ✷, ✶, ✵, ✴, ✳, ✲, ✱, ✰, ✯, ✮, ✭, ✬, ✫, ✪, ✩, ✧, ✦, ✥, ✤, ✣, ✢, ⛤, ⛥, ⛦, ⛧ ]
+    "^" : [ "^", "+", "-", "×", "÷", "±", "=", "≠", "＝", "＋", "－", "＜", "＞", "∈", "∏", "∑", "≮", "≯", "∕", "√", "∝", "∞", ∟, ∠, ∥, ∧, ∨, ∩, ∪, ∫, ∮, ∴, ∵, ∷, ∽, ≈, ≌, ≒, ≡, ≤, ≥, ≦, ≧, ⊕, ⊙, ⊥, ⊿, ㏑, ㏒ ]
+    "=" : { commit: "=" }
+    "-" : { commit: "-" }
+    "," : { commit: "," }
+    "." : { commit: "." }
+    ";" : [ ";", "…", "·", "`", "'", "\"" ]
+    "'" : { pair: [ "‘", "’" ] }
+    "\"" : { pair: [ "“", "”" ] }
+
+key_binder:
+  bindings:
+    - {accept: Return, send: space, when: has_menu} #return,enter直出
+    - {accept: space, send: grave, when: has_menu} ##按空白鍵後會空一格並上屏，原「`」鍵會失效變「空格」。
+    - {accept: space, send: space, when: paging} ##選單有多字並選擇時，不會跳成單字加上空格。
+    - {accept: comma, send: comma, when: has_menu}
+    - {accept: period, send: period, when: has_menu}
+    - {accept: minus, send: minus, when: has_menu}
+    - {accept: equal, send: equal, when: has_menu}
+    - {accept: Left, send: Page_Up, when: paging}
+    - {accept: Right, send: Page_Down, when: paging}
+    - {accept: Tab, send: Shift+Right, when: composing}
+
+editor:
+  bindings:
+    Shift+Return: commit_raw_input
+
+recognizer:
+
