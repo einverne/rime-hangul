@@ -2,60 +2,9 @@
 #@/db_name	hangeul_phrase.txt
 #@/db_type	tabledb
 #@/rime_version	1.2.9
-#@/tick	57
-ㅂ	a	1
-ㅃ	aa	0
-ㅄ	ab	0
-보아	aq	0
-ㅅ	b	1
-ㅆ	bb	1
-ㄷ	c	1
-ㄸ	cc	0
-대만	co	9
-ㅊ	d	1
-ㅌ	e	1
-ㅑ	f	1
-ㅕ	g	0
-ㅐ	h	0
-ㅒ	hh	0
-ㅣ	i	0
-아이유	iu	4
-ㅓ	j	1
-ㅏ	k	0
-ㄴ	l	1
-ㄵ	lu	0
-ㄶ	lw	0
-ㅛ	m	0
-ㅗ	n	0
-ㅙ	nh	0
-ㅚ	ni	0
-ㅘ	nk	0
-ㅁ	o	1
-ㅔ	p	0
-ㅖ	pp	0
-ㅇ	q	0
-이지은	quq	5
-ㅠ	r	2
-ㄹ	s	2
-ㄼ	sa	0
-ㄽ	sb	0
-ㄾ	se	0
-ㄻ	so	0
-ㅀ	sw	0
-ㄿ	sx	0
-ㄺ	sy	0
-ㅜ	t	0
-ㅟ	ti	0
-ㅝ	tj	0
-ㅞ	tp	0
-ㅈ	u	1
-ㅉ	uu	0
-ㅡ	v	0
-ㅢ	vi	0
-ㅎ	w	8
-ㅍ	x	1
-ㄱ	y	1
-권보아	yaq	0
-ㄳ	yb	0
-ㄲ	yy	1
-ㅋ	z	13
+#@/tick	51
+🌏【 ✦ 洋蔥‧韓語（洋蔥鍵位） ✦ 】📡	pp
+이지은	quq
+권보아	yaq
+대만	co
+아이유	iu

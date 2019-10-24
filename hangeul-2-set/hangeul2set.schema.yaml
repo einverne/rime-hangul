@@ -1,14 +1,12 @@
-#錯誤查看%TEMP%\rime.weasel
 # Rime schema settings
 # encoding: utf-8
-# 《韓語設定頁》
-#前面加#字是不執行,後面加#也不執行
+# 《韓語標準鍵位(2-set)設定頁》
 schema:
   schema_id: hangeul2set # 注意此ID與文件名裏 .schema.yaml 之前的部分相同
   name: ❃韓語2set❃
-  version: "201712"
+  version: "201903"
   author:
-    - 製作人
+    - 『洋蔥』
   description: |
     韓文
 
@@ -19,30 +17,30 @@ switches:
   - name: full_shape
     states: [ "半形", "全形" ]
 
-engine: 
-  processors: 
+engine:
+  processors:
     - ascii_composer
+    - recognizer
     - key_binder
     - speller
+    - punctuator
     - selector
     - navigator
-    - punctuator
-    - recognizer
     - express_editor
 #    - fluency_editor
   segmentors:
     - ascii_segmentor
+    - matcher
     - abc_segmentor
     - punct_segmentor
-    - matcher
     - fallback_segmentor
   translators:
-    - script_translator 
+    - script_translator
     - punct_translator
     - table_translator@hangeul_phrase
 
 menu:
-  alternative_select_keys: "1234567890"
+  alternative_select_keys: "0123456789"
   page_size: 10
 
 speller:
@@ -73,18 +71,17 @@ speller:
     - derive/^T/tt/
 
 translator:
-  dictionary: hangeul2set.extended
+  dictionary: hangeul2set
+  prism: hangeul2set
   enable_user_dict: true
   enable_sentence: false
   enable_completion: false
   preedit_format:
-    - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
+#    - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
+    - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP |ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ·|"
   comment_format:
-    - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
-  disable_user_dict_for_patterns:
-    - ^[a-z;]{1}$
-    - ^[a-z;]{2}$
-    - ^[a-z;]{3}$
+#    - "xlit|abcdefghijklmnopqrstuvwxyz|ABCDEFGHIJKLMNOPQRSTUVWXYZ|"
+    - "xlit|abcdefghijklmnopqrstuvwxyzQWERTOP |ㅁㅠㅊㅇㄷㄹㅎㅗㅑㅓㅏㅣㅡㅜㅐㅔㅂㄱㄴㅅㅕㅍㅈㅌㅛㅋㅃㅉㄸㄲㅆㅒㅖ·|"
 
 hangeul_phrase:
   dictionary: ""
@@ -96,7 +93,8 @@ hangeul_phrase:
 
 punctuator:
   half_shape:
-    "`" : { commit: " " }
+    "`" : { commit: "₩" }
+    "|" : { commit: " " }  ##會空一格並上屏，原「|」鍵會失效變「空格」。可結合key_binder空白鍵，使空白鍵能空一格上屏。
     "$" : [ "$", "₩", "＄", "¥", "￥", "€", "£", "￡", "₤", "¢", "￠", "₵", "₡", "¤", "৳", "฿", "₠", "₢", "₣", "₥", "₦", "₧", "₪", "₫", "₭", "₮", "₯", "₰", "₱", "₲", "₳", "₴", "₶", "₷", "₸", "₹", "₺", "₨", "﷼" ]
     "%" : [ "%", "％", "‰", "‱", "°", "℃", "℉", "Å", "㏃", "㏆", "㎈", "㏄", "㏅", "㎝", "㎠", "㎤", "㏈", "㎗", "㎙", "㎓", "㎬", "㏉", "㏊", "㏋", "㎐", "㏌", "㎄", "㎅", "㎉", "㎏", "㎑", "㏍", "㎘", "㎞", "㏎", "㎢", "㎦", "㎪", "㏏", "㎸", "㎾", "㏀", "㏐", "㏓", "㎧", "㎨", "㎡", "㎥", "㎃", "㏔", "㎆", "㎎", "㎒", "㏕", "㎖", "㎜", "㎟", "㎣", "㏖", "㎫", "㎳", "㎷", "㎹", "㎽", "㎿", "㏁", "㎁", "㎋", "㎚", "㎱", "㎵", "㎻", "㏘", "㎩", "㎀", "㎊", "㏗", "㏙", "㏚", "㎰", "㎴", "㎺", "㎭", "㎮", "㎯", "㏛", "㏜", "㎔", "㏝", "㎂", "㎌", "㎍", "㎕", "㎛", "㎲", "㎶", "㎼" ]
     "&" : [ "&", "＆", "＃", "＠", ⅟, ½, ↉, ⅓, ⅔, ¼, ⅕, ⅖, ⅗, ⅘, ⅙, ⅚, ⅐, ⅛, ⅜, ⅝, ⅞, ⅑, ⅒ ]
@@ -109,12 +107,38 @@ punctuator:
     ";" : [ ";", "…", "·", "`", "'", "\"" ]
     "'" : { pair: [ "‘", "’" ] }
     "\"" : { pair: [ "“", "”" ] }
+#############################
+    "A" : { commit: "ㅁ" }
+    "B" : { commit: "ㅠ" }
+    "C" : { commit: "ㅊ" }
+    "D" : { commit: "ㅇ" }
+#    "E" : { commit: "ㄸ" }
+    "F" : { commit: "ㄹ" }
+    "G" : { commit: "ㅎ" }
+    "H" : { commit: "ㅗ" }
+    "I" : { commit: "ㅑ" }
+    "J" : { commit: "ㅓ" }
+    "K" : { commit: "ㅏ" }
+    "L" : { commit: "ㅣ" }
+    "M" : { commit: "ㅡ" }
+    "N" : { commit: "ㅜ" }
+#    "O" : { commit: "ㅒ" }
+#    "P" : { commit: "ㅖ" }
+#    "Q" : { commit: "ㅃ" }
+#    "R" : { commit: "ㄲ" }
+    "S" : { commit: "ㄴ" }
+#    "T" : { commit: "ㅆ" }
+    "U" : { commit: "ㅕ" }
+    "V" : { commit: "ㅍ" }
+#    "W" : { commit: "ㅉ" }
+    "X" : { commit: "ㅌ" }
+    "Y" : { commit: "ㅛ" }
+    "Z" : { commit: "ㅋ" }
+#############################
 
 key_binder:
+  import_preset: default
   bindings:
-    - {accept: Return, send: space, when: has_menu} #return,enter直出
-    - {accept: space, send: grave, when: has_menu} ##按空白鍵後會空一格並上屏，原「`」鍵會失效變「空格」。
-    - {accept: space, send: space, when: paging} ##選單有多字並選擇時，不會跳成單字加上空格。
     - {accept: comma, send: comma, when: has_menu}
     - {accept: period, send: period, when: has_menu}
     - {accept: minus, send: minus, when: has_menu}
@@ -122,10 +146,16 @@ key_binder:
     - {accept: Left, send: Page_Up, when: paging}
     - {accept: Right, send: Page_Down, when: paging}
     - {accept: Tab, send: Shift+Right, when: composing}
+    - {accept: Shift+space, send: Down, when: has_menu} #選字可用「 Shift 」+空白鍵
+    - {accept: Return, send: space, when: has_menu} #return,enter直出
+    - {accept: space, send: bar, when: has_menu} #按空白鍵後會空一格並上屏，原「|」鍵會失效變「空格」。
+    - {accept: space, send: space, when: paging} #選單有多字並選擇時，不會跳成單字加上空格。
 
 editor:
   bindings:
     Shift+Return: commit_raw_input
 
 recognizer:
-
+  patterns:
+    email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
+    url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"

@@ -1,10 +1,11 @@
 # Rime table
-#@/db_name	hangeul_phrase.txt
+#@/db_name	hangeul2set_phrase.txt
 #@/db_type	tabledb
 #@/rime_version	1.2.9
 #@/tick	58
-보아	aq	0
-대만	co	9
-아이유	iu	6
-이지은	quq	4
-권보아	yaq	0
+🌏【 ✦ 洋蔥‧韓語（2-set 標準鍵位） ✦ 】📡	pp
+보아	aq
+대만	co
+아이유	iu
+이지은	quq
+권보아	yaq
