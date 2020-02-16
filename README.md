@@ -8,7 +8,7 @@
 
 - rime-hangyl
 - hangeul-2-set
-- hangeul-structure
+- hangeul 韩语形码
 
 ## rime-hangyl
 Rime 音码转写方案，repo 中有图片指导，来源于 Rime 官方 repo.
